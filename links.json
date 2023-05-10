@@ -1,0 +1,7 @@
+[
+	{"name": "All Hot Keys", "url": "https://allhotkeys.com", "tags": ["computing", "references"]},
+	{"name": "Decode Unicode", "url": "https://decodeunicode.org/", "tags": ["computing", "references"]},
+	{"name": "Mozilla MDN Web Docs", "url": "https://developer.mozilla.org/en-US/docs/Web", "tags": ["computing", "references", "API", "programming"]},
+	{"name": "OpenSource.com", "url": "https://opensource.com", "tags": ["blogs", "computing"]},
+    {"name": "Wikimedia Foundation Tools", "url": "https://foundation.wikimedia.org/wiki/Home", "tags": ["search-engines", "references"]}
+]

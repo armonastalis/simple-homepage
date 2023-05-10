@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+        <title>Index</title>
+		<script type="text/javascript">
+			function processJSON(responseData) {
+				//console.log(responseData);
+				let myOutput = "";
+				myOutput += "<table id=\"myTable\">";
+				myOutput += "\n\t<tr class=\"t_header\">";
+				myOutput += "\n\t<th style=\"width:50%;\"><h1>Name</h1></th>";
+				myOutput += "\n\t<th style=\"width:50%;\"><h1>Tags</h1></th>";
+				myOutput += "\n\t</tr>";
+				for (let i in responseData) {
+					myOutput += ("\n\t<tr>\n\t\t<td><a href=\"" + responseData[i].url + "\">" + responseData[i].name + "</a></td>" + "\n\t\t<td>" + responseData[i].tags + "</td>\n\t</tr>");
+				}
+				myOutput += "</table>";
+				document.getElementById("dynamiclinks").innerHTML = myOutput;
+			}
+
+			function filterFunc() {
+				var name_filter, tags_filter;
+				var filterByName, filterByTags;
+				var table, tr;
+				var td_name, td_tags;
+				var name_value, tags_value;
+				var matched_name, matched_tags;
+
+				name_filter = document.getElementById("txtInputName").value.toUpperCase();
+				tags_filter = document.getElementById("txtInputTags").value.toUpperCase();
+
+				filterByName = name_filter != "" ? true : false;
+				filterByTags = tags_filter != "" ? true : false;
+
+				table = document.getElementById("myTable");
+				tr = table.getElementsByTagName("tr");
+
+				// Start loop at 1 rather than 0.
+				// This bypasses the table header.
+				// Or must check for `if (td) {}` to use 0.
+				for (let i = 1; i < tr.length; i++) {
+					td_name = tr[i].getElementsByTagName("td")[0];
+					td_tags = tr[i].getElementsByTagName("td")[1];
+					name_value = (td_name.textContent || td_name.innerText).toUpperCase();
+					tags_value = (td_tags.textContent || td_tags.innerText).toUpperCase();
+					matched_name = name_value.indexOf(name_filter);
+					matched_tags = tags_value.indexOf(tags_filter);
+
+					// Filter by only Name
+					if (filterByName && !filterByTags) {
+						tr[i].style.display = matched_name > -1 ? "" : "none";
+					}
+					// Filter by only Tags
+					else if (!filterByName && filterByTags) {
+						tr[i].style.display = matched_tags > -1 ? "" : "none";
+					}
+					// Filter by both Name and Tags
+					else if (filterByName && filterByTags) {
+						tr[i].style.display = (matched_name > -1 && matched_tags > -1) ? "" : "none";
+					}
+					// No filter so display all
+					else { tr[i].style.display = ""; }
+				}
+			}
+		</script>
+        <link rel="stylesheet" media="Screen" type="text/css" href="./css/style1.css" />
+    </head>
+	<body>
+		<div id="page-container">
+			<div id="content-wrap">
+				<div id="global-header">
+					<img src="./images/harper-icon.png" alt="Main Logo" />
+				</div>
+				<div id="global-content">
+					<div id="search-bars">
+						<table>
+							<tr>
+								<td><input type="text" id="txtInputName" onkeyup="filterFunc()" placeholder="Filter Names" autocomplete="off" autofocus/></td>
+								<td></td>
+								<td><input type="text" id="txtInputTags" onkeyup="filterFunc()" placeholder="Filter Tags" autocomplete="off" /></td>
+							</tr>
+						</table>	
+					</div>
+					<div id="dynamiclinks">If you see this message javascript isn't enabled or there is an error.</div>
+					<script type="text/javascript">
+						fetch('./links.json')
+							.then(response => response.json())
+							.then(data => processJSON(data));
+					</script>
+				</div>
+			</div>
+			<div id="global-footer">
+				<p><a href="https://www.nordtheme.com/">Nord Color Palette</a></p>
+			</div>
+		</div>
+    </body>
+</html>

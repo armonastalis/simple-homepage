@@ -1,0 +1,159 @@
+/* Using the nord color scheme.
+See https://www.nordtheme.com/docs/colors-and-palettes.
+CSS help from:
+    - w3schools.com.
+    - https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+*/
+
+:root {
+    --nord0: #2e3440;
+    --nord1: #3b4252;
+    --nord2: #434c5e;
+    --nord3: #4c566a;
+    --nord4: #d8dee9;
+    --nord5: #e5e9f0;
+    --nord6: #eceff4;
+    --nord7: #8fbcbb;
+    --nord8: #88c0d0;
+    --nord9: #81a1c1;
+    --nord10: #5e81ac;
+    --nord11: #bf616a;
+    --nord12: #d08770;
+    --nord13: #ebcb8b;
+    --nord14: #a3be8c;
+    --nord15: #b48ead;
+}
+
+body {
+    background-color: var(--nord0);
+    color: var(--nord6);
+    margin: 0;
+	width: 100%;
+    font-family: sans-serif;
+}
+
+h1 {
+    color: var(--nord15);
+    font-family: monospace;
+}
+
+a:link {
+    color: var(--nord14);
+}
+
+a:visited {
+    color: var(--nord14);
+}
+
+a:hover {
+    color: var(--nord12);
+}
+
+a:active {
+    color: var(--nord11);
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 60px; /* Footer height */
+}
+
+#global-header {
+    text-align: center;
+    max-width: 100%;
+    max-height:10%;
+    margin-top: 5px;
+}
+
+#global-header img {
+    width: 7%;
+    height: 7%;
+}
+
+#global-content {
+    margin: 0 auto;
+    width: 95%;
+    min-height: 100%;
+}
+
+#search-bars {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#search-bars table {
+    width:100%;
+}
+
+#txtInputName, #txtInputTags {
+    background-color: var(--nord1);
+    color: var(--nord6);
+	width: 100%;
+	font-size: larger;
+    text-align: center;
+	padding: 10px 0px 10px 0px;
+	border: 1px solid var(--nord9);
+	margin-bottom: 10px;
+}
+
+/*
+#myInputName::placeholder, #myInputTags::placeholder {
+    background-image: url("/searchicon-alpha.png");
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+}
+*/
+
+#myTable {
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid var(--nord9);
+    overflow-wrap: anywhere;
+}
+
+#myTable th, #myTable td {
+	text-align: left;
+    padding-left: 5px;
+}
+
+#myTable td {
+    font-size: larger;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+#myTable tr {
+	border-bottom: 1px solid var(--nord10);
+}
+
+#myTable tr.t_header, #myTable tr:hover {
+	background-color: var(--nord1);
+}
+
+#global-footer {
+    background-color: var(--nord1);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+@media only screen and (max-device-width: 480px) {
+    #myTable th {
+        font-size: small;
+    }
+
+    #txtInputName, #txtInputTags {
+        font-size: small;
+    }
+
+    #myTable td {
+        font-size: small;
+    }
+}
