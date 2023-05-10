@@ -31,7 +31,7 @@ An example `links.json`:
 
 ```json
 [
-	{"name": "OpenSource.com", "url": "https://opensource.com", "tags": ["blogs", "computing"]},
+    {"name": "OpenSource.com", "url": "https://opensource.com", "tags": ["blogs", "computing"]},
     {"name": "Wikimedia Foundation Tools", "url": "https://foundation.wikimedia.org/wiki/Home", "tags": ["search-engines", "references"]}
 ]
 ```
